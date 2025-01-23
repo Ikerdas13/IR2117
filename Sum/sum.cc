@@ -16,6 +16,7 @@ std::cout<<"The sum from 1 to " << numero << " is " << rdo <<std::endl;
 }
 else{
 std::cout<<"Invalid number" << std::endl;
+sum();
 }
 }
 
