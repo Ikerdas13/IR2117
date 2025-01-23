@@ -1,7 +1,7 @@
-#includez<iostream>
+#include<iostream>
 
 int main()
 {
- std::cout<<"hello World"<<std::endl;
- return0;
+ std::cout<<"Hello World!"<< std::endl;
+ return 0;
  }
