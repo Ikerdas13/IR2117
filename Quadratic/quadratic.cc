@@ -1,20 +1,29 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <cmath> 
 
 using namespace std;
-int main(){
-cout <<"Introduce a:" <<endl;
-int a;
-cin >> a;
 
-cout <<"Introduce b:" <<endl;
-int b;
-cin >> b;
+int main() {
+    cout << "Versión 2: Resolver el caso general (discriminante >= 0)\n";
 
-cout <<"Introduce c:" <<endl;
-int c;
-cin >> c;
+    double a, b, c;
+    cout << "Introduce los coeficientes a, b y c: ";
+    cin >> a >> b >> c;
 
+    if (a == 0) {
+        cout << "Esto no es una ecuación cuadrática.\n";
+        return 1; // Devuelve un valor de error
+    }
 
-cout << "The equacion have "<<a<<"x² "<<b<<"x "<< c<<endl;
+    double discriminante = b * b - 4 * a * c;
+    if (discriminante >= 0) {
+        double x1 = (-b + sqrt(discriminante)) / (2 * a);
+        double x2 = (-b - sqrt(discriminante)) / (2 * a);
+        cout << "Las soluciones son: " << x1 << " y " << x2 << "\n";
+    } else {
+        cout << "El discriminante es negativo. No hay soluciones reales.\n";
+    }
+
+    return 0; 
 }
+
