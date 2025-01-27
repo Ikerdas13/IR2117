@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
- cout << "Versión 3: Discriminante negativo (mensaje)\n";
+cout << "Versión 4: Discriminante igual a 0 (una solución)\n";
     double a, b, c;
     cout << "Introduce los coeficientes a, b y c: ";
     cin >> a >> b >> c;
@@ -15,10 +15,11 @@ int main() {
     }
 
     double discriminante = b * b - 4 * a * c;
-    if (discriminante < 0) {
-        cout << "El discriminante es negativo. No hay soluciones reales.\n";
+    if (discriminante == 0) {
+        double x = -b / (2 * a);
+        cout << "Hay una única solución: " << x << "\n";
     } else {
-        cout << "El discriminante no es negativo. Continuar con la siguiente versión.\n";
+        cout << "El discriminante no es igual a 0. Continuar con la siguiente versión.\n";
     }
 
 return 0; 
