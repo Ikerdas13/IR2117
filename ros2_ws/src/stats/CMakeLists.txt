@@ -13,6 +13,16 @@ find_package(ament_cmake REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
+  
+find_package(rclcpp REQUIRED) 
+find_package(std_msgs REQUIRED)
+
+add_executable(stats src/mean.cpp) 
+ament_target_dependencies(stats rclcpp std_msgs)
+install (TARGETS
+	stats
+	DESTINATION lib/${PROJECT_NAME}
+)
   # the following line skips the linter which checks for copyrights
   # comment the line when a copyright and license is added to all source files
   set(ament_cmake_copyright_FOUND TRUE)
