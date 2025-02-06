@@ -17,10 +17,15 @@ if(BUILD_TESTING)
 find_package(rclcpp REQUIRED) 
 find_package(std_msgs REQUIRED)
 
-add_executable(stats src/mean.cpp) 
-ament_target_dependencies(stats rclcpp std_msgs)
+add_executable(mean src/mean.cpp) 
+ament_target_dependencies(mean rclcpp std_msgs)
+
+add_executable(median src/median.cpp) 
+ament_target_dependencies(median rclcpp std_msgs)
+
 install (TARGETS
-	stats
+	mean
+	median
 	DESTINATION lib/${PROJECT_NAME}
 )
   # the following line skips the linter which checks for copyrights
