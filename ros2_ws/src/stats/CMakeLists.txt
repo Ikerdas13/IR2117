@@ -20,12 +20,17 @@ find_package(std_msgs REQUIRED)
 add_executable(mean src/mean.cpp) 
 ament_target_dependencies(mean rclcpp std_msgs)
 
+add_executable(mode src/mode.cpp) 
+ament_target_dependencies(mode rclcpp std_msgs)
+
+
 add_executable(median src/median.cpp) 
 ament_target_dependencies(median rclcpp std_msgs)
 
 install (TARGETS
 	mean
 	median
+	mode	
 	DESTINATION lib/${PROJECT_NAME}
 )
   # the following line skips the linter which checks for copyrights
