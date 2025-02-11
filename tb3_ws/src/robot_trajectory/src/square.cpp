@@ -39,7 +39,7 @@ for(int j=0; j<4; j++)
 	loop_rate.sleep();
 
 	i=0; n= 1000;
-	while (rclpp::ok() && (i<n)) {
+	while (rclcpp::ok() && (i<n)) {
 		i++;
 		message.linear.x = 0;
 		message.linear.z = 0.1;
@@ -49,7 +49,7 @@ for(int j=0; j<4; j++)
 	}
 }
 
-}
+
 rclcpp:: shutdown();
 return 0;
 }
