@@ -1,0 +1,8 @@
+[0.013s] Invoking command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/usuario/IR2117/tb3_ws/build/robot_trajectory -- -j6 -l6
+[0.065s] [35m[1mConsolidate compiler generated dependencies of target publisher[0m
+[0.092s] [100%] Built target publisher
+[0.103s] Invoked command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/usuario/IR2117/tb3_ws/build/robot_trajectory -- -j6 -l6
+[0.115s] Invoking command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/usuario/IR2117/tb3_ws/build/robot_trajectory
+[0.122s] -- Install configuration: ""
+[0.132s] -- Up-to-date: /home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/publisher
+[0.143s] Invoked command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/usuario/IR2117/tb3_ws/build/robot_trajectory
