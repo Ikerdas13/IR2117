@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         while (rclcpp::ok() && i < n) {
             i++;
             message.linear.x = 0;
-            message.angular.z = 0.165;  //0.157 en la simulacion
+            message.angular.z = 0.16;  //0.157 en la simulacion
             publisher->publish(message); 
             rclcpp::spin_some(node); 
             loop_rate.sleep();
