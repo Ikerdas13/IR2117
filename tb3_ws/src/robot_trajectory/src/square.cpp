@@ -1,6 +1,7 @@
 #include <chrono>
 #include "rclcpp/rclcpp.hpp" 
 #include "geometry_msgs/msg/twist.hpp"
+#include <cmath>
 
 using namespace std::chrono_literals;
 
@@ -16,11 +17,13 @@ rclcpp::WallRate loop_rate(10ms);
 
      
 node->declare_parameter("linear_speed", 0.1);
-node->declare_parameter("angular_speed", 3.1416 /20);
+node->declare_parameter("angular_speed", M_PI /20);
+node->declare_parameter("square_length", 2);
     
     
  double linear_speed = node->get_parameter("linear_speed").get_parameter_value().get<double>();
 double angular_speed = node->get_parameter("angular_speed").get_parameter_value().get<double>();
+int square_length = node->get_parameter("square_length").get_parameter_value().get<int>();
     
     
     
@@ -33,7 +36,7 @@ double angular_speed = node->get_parameter("angular_speed").get_parameter_value(
 
     for (int j = 0; j < 4; j++) {
       
-        int i = 0, n = 1000;  
+        int i = 0, n = square_length * 1000;  
         while (rclcpp::ok() && i < n) {
             i++;
             message.linear.x = linear_speed;  
@@ -61,6 +64,11 @@ double angular_speed = node->get_parameter("angular_speed").get_parameter_value(
             loop_rate.sleep();
         }
     }
+    message.linear.x = 0;
+        message.angular.z = 0;
+        publisher->publish(message); 
+        rclcpp::spin_some(node); 
+        loop_rate.sleep();
 
     rclcpp::shutdown();
     return 0;
