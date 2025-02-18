@@ -55,3 +55,6 @@ endforeach()
 message(STATUS "Execute custom uninstall script")
 
 # begin of custom uninstall code
+
+# uninstall files installed using the symlink install functions
+include("/home/usuario/IR2117/tb3_ws/build/robot_trajectory/ament_cmake_symlink_install/ament_cmake_symlink_install_uninstall_script.cmake")
