@@ -5,8 +5,11 @@
 
 using namespace std::chrono_literals;
 void topic_callback(nav_msgs::msg::Odometry message){
-	auto x = message.pose.pose.position.x
-	auto y = message.pose.pose.position.y
+	auto x = message.pose.pose.position.x;
+	auto y = message.pose.pose.position.y;
+	std::cout << " La coordenada x es: " << x << std::endl;
+	std::cout << " La coordenada y es: " << y << std::endl;
+	
 }
 
 int main(int argc, char *argv[])
