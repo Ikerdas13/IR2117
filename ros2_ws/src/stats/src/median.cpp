@@ -14,6 +14,7 @@ void topic_callback(const std_msgs::msg::Int32::SharedPtr msg)
     float median;
     
     std_msgs::msg::Float32 out_msg;
+    
 
     
     std::sort(numeros.begin(), numeros.end());
