@@ -16,15 +16,20 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   find_package(rclcpp REQUIRED) 
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
 
 add_executable(min src/min.cpp) 
 ament_target_dependencies(min rclcpp std_msgs)
 add_executable(max src/max.cpp) 
 ament_target_dependencies(max rclcpp std_msgs)
+add_executable(minmax src/minmax.cpp) 
+ament_target_dependencies(minmax rclcpp std_msgs)
 
 install (TARGETS
 	min	
 	max
+	minmax
 	DESTINATION lib/${PROJECT_NAME}
 )
 
