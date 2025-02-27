@@ -78,39 +78,27 @@ int main(int argc, char *argv[]) {
         rclcpp::spin_some(node); 
         loop_rate.sleep();
 
-        // Girar 90 grados
-        float current_angle = theta; // Guardamos el ángulo actual al inicio de la rotación
-        while (rclcpp::ok()) {
-            float angle_diff = target_angle - (theta - current_angle); // Diferencia con el ángulo actual
-            // Ajuste para el caso en que el ángulo se pase de -π a π
-            if (angle_diff > M_PI) {
-                angle_diff -= 2 * M_PI;
-            } else if (angle_diff < -M_PI) {
-                angle_diff += 2 * M_PI;
-            }
+       
+        float theta_ini = theta; 
+        while (rclcpp::ok() && theta-theta_ini < target_angle) {
+         
 
-            // Si la diferencia de ángulo es suficientemente pequeña, paramos
-            if (fabs(angle_diff) < 0.01) {
-                break;
-            }
-
-            // Control del movimiento
+            
             msg.linear.x = 0.0;  
-            msg.angular.z = (angle_diff > 0) ? angular_speed : -angular_speed;  
+            msg.angular.z = angular_speed;  
             publisher->publish(msg);
             rclcpp::spin_some(node); 
             loop_rate.sleep();
         }
 
-        // Detenerse una vez completado el giro
+        
         msg.linear.x = 0.0;
         msg.angular.z = 0.0;
         publisher->publish(msg);
         rclcpp::spin_some(node); 
         loop_rate.sleep();
 
-        // Actualizamos el ángulo de referencia para el siguiente giro
-        current_angle = theta;  // Ahora el ángulo actual es la nueva referencia
+        
     }
 
     rclcpp::shutdown();
