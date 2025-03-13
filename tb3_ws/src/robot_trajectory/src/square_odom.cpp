@@ -10,13 +10,15 @@ double x_ini;
 double y_ini;
 double theta_ini;
 
-double x;
-double y;
-double theta;
+double x = 0.0;
+double y = 0.0;
+double theta = 0.0;
 
 double normalizar_angle(double angle) {
     while (angle > M_PI) angle -= 2.0 * M_PI;
     while (angle < -M_PI) angle += 2.0 * M_PI;
+    if (angle > M_PI) angle -= 2.0 * M_PI;
+    if (angle < -M_PI) angle += 2.0 * M_PI;
     return angle;
 }
 
@@ -43,7 +45,7 @@ int main(int argc, char *argv[]) {
     auto subscriber = node->create_subscription<nav_msgs::msg::Odometry>("odom", 10, topic_callback);
     auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 
-    node->declare_parameter("linear_speed", 0.1);
+    node->declare_parameter("linear_speed", 0.2);  
     node->declare_parameter("angular_speed", 0.1);
     node->declare_parameter("square_length", 1.0);
     double target_angle = M_PI / 2;
@@ -58,6 +60,11 @@ int main(int argc, char *argv[]) {
 
     rclcpp::spin_some(node);
     loop_rate.sleep();
+
+    while (x == 0.0 && y == 0.0) {
+        rclcpp::spin_some(node);  
+        loop_rate.sleep();
+    }
 
     for (int j = 0; j < 4; j++) {
         float distance_travelled = 0.0;
@@ -84,7 +91,7 @@ int main(int argc, char *argv[]) {
         loop_rate.sleep();
 
         theta_ini = theta;
-        while (rclcpp::ok() && std::abs(normalizar_angle(theta - theta_ini)) < target_angle) {
+        while (rclcpp::ok() && std::abs(normalizar_angle(theta - theta_ini)) < target_angle - 0.1) {
             msg.linear.x = 0.0;
             msg.angular.z = angular_speed;
             publisher->publish(msg);
