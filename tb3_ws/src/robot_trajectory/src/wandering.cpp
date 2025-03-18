@@ -2,9 +2,14 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
-#include <algorithm>  // Para std::min
+#include "geometry_msgs/msg/twist.hpp"
+#include <algorithm>  
+#include <limits>
 
 using namespace std::chrono_literals;
+
+
+float min_value = std::numeric_limits<float>::infinity();  
 
 void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
     std::cout << "LaserScan received" << std::endl;
@@ -13,14 +18,13 @@ void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
         std::cout << "Ranges size: " << msg->ranges.size() << std::endl;
 
         if (msg->ranges.size() > 270) {
-            float min_value = std::numeric_limits<float>::infinity();  
+            min_value = std::numeric_limits<float>::infinity();  
 
-           
+            
             for (int i = 0; i <= 9; ++i) {
                 min_value = std::min(min_value, msg->ranges[i]);
             }
 
-           
             for (int i = 350; i <= 359; ++i) {
                 min_value = std::min(min_value, msg->ranges[i]);
             }
@@ -36,18 +40,33 @@ void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
 int main(int argc, char *argv[]) {
     rclcpp::init(argc, argv);
 
+    
     auto node = rclcpp::Node::make_shared("wandering");
+
+    
     auto subscriber = node->create_subscription<sensor_msgs::msg::LaserScan>(
         "/scan", 10, callback_topic);
-    auto publisher = node->create_publisher<std_msgs::msg::String>("cmd_vel", 10);
-    std_msgs::msg::String message;
+
+    
+    auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+    geometry_msgs::msg::Twist message;
 
     rclcpp::WallRate loop_rate(10ms);
 
     while (rclcpp::ok()) {
-        message.data = "0";  
+        
+        if (min_value > 1.0) {
+            message.linear.x = 0.2;  
+        } else {
+            
+            message.linear.x = 0.0; 
+        }
+
+       
         publisher->publish(message);
-        rclcpp::spin(node);
+
+     
+        rclcpp::spin_some(node);
         loop_rate.sleep();
     }
 
