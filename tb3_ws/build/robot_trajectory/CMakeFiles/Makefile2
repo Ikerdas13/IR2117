@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /home/usuario/IR2117/tb3_ws/build/robot_trajectory
 # The main recursive "all" target.
 all: CMakeFiles/square.dir/all
 all: CMakeFiles/square_odom.dir/all
+all: CMakeFiles/wandering.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/robot_trajectory_uninstall.dir/clean
 clean: CMakeFiles/square.dir/clean
 clean: CMakeFiles/square_odom.dir/clean
+clean: CMakeFiles/wandering.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -181,6 +183,32 @@ square_odom: CMakeFiles/square_odom.dir/rule
 CMakeFiles/square_odom.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square_odom.dir/build.make CMakeFiles/square_odom.dir/clean
 .PHONY : CMakeFiles/square_odom.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wandering.dir
+
+# All Build rule for target.
+CMakeFiles/wandering.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=5,6 "Built target wandering"
+.PHONY : CMakeFiles/wandering.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wandering.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/wandering.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
+.PHONY : CMakeFiles/wandering.dir/rule
+
+# Convenience name for target.
+wandering: CMakeFiles/wandering.dir/rule
+.PHONY : wandering
+
+# clean rule for target.
+CMakeFiles/wandering.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/clean
+.PHONY : CMakeFiles/wandering.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

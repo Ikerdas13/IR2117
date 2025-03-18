@@ -223,6 +223,19 @@ square_odom/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square_odom.dir/build.make CMakeFiles/square_odom.dir/build
 .PHONY : square_odom/fast
 
+#=============================================================================
+# Target rules for targets named wandering
+
+# Build rule for target.
+wandering: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 wandering
+.PHONY : wandering
+
+# fast build rule for target.
+wandering/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/build
+.PHONY : wandering/fast
+
 src/square.o: src/square.cpp.o
 .PHONY : src/square.o
 
@@ -271,6 +284,30 @@ src/square_odom.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square_odom.dir/build.make CMakeFiles/square_odom.dir/src/square_odom.cpp.s
 .PHONY : src/square_odom.cpp.s
 
+src/wandering.o: src/wandering.cpp.o
+.PHONY : src/wandering.o
+
+# target to build an object file
+src/wandering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/src/wandering.cpp.o
+.PHONY : src/wandering.cpp.o
+
+src/wandering.i: src/wandering.cpp.i
+.PHONY : src/wandering.i
+
+# target to preprocess a source file
+src/wandering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/src/wandering.cpp.i
+.PHONY : src/wandering.cpp.i
+
+src/wandering.s: src/wandering.cpp.s
+.PHONY : src/wandering.s
+
+# target to generate assembly for a file
+src/wandering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/src/wandering.cpp.s
+.PHONY : src/wandering.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -288,12 +325,16 @@ help:
 	@echo "... uninstall"
 	@echo "... square"
 	@echo "... square_odom"
+	@echo "... wandering"
 	@echo "... src/square.o"
 	@echo "... src/square.i"
 	@echo "... src/square.s"
 	@echo "... src/square_odom.o"
 	@echo "... src/square_odom.i"
 	@echo "... src/square_odom.s"
+	@echo "... src/wandering.o"
+	@echo "... src/wandering.i"
+	@echo "... src/wandering.s"
 .PHONY : help
 
 
