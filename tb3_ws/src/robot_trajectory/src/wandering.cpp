@@ -8,7 +8,6 @@
 
 using namespace std::chrono_literals;
 
-
 float min_value = std::numeric_limits<float>::infinity();  
 
 void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
@@ -20,7 +19,7 @@ void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
         if (msg->ranges.size() > 270) {
             min_value = std::numeric_limits<float>::infinity();  
 
-            
+       
             for (int i = 0; i <= 9; ++i) {
                 min_value = std::min(min_value, msg->ranges[i]);
             }
@@ -43,11 +42,11 @@ int main(int argc, char *argv[]) {
     
     auto node = rclcpp::Node::make_shared("wandering");
 
-    
+   
     auto subscriber = node->create_subscription<sensor_msgs::msg::LaserScan>(
         "/scan", 10, callback_topic);
 
-    
+   
     auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
     geometry_msgs::msg::Twist message;
 
@@ -57,15 +56,16 @@ int main(int argc, char *argv[]) {
         
         if (min_value > 1.0) {
             message.linear.x = 0.2;  
+            message.angular.z = 0.0; 
         } else {
-            
-            message.linear.x = 0.0; 
+            message.linear.x = 0.0;  
+            message.angular.z = 0.2; 
         }
 
-       
+        
         publisher->publish(message);
 
-     
+        
         rclcpp::spin_some(node);
         loop_rate.sleep();
     }
