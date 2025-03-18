@@ -8,15 +8,18 @@ using namespace std::chrono_literals;
 void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
     std::cout << "LaserScan received" << std::endl;
 
-   
     if (msg->ranges.size() > 0) {
-        std::cout << "Ranges size: " << msg->ranges.size() << std::endl;  
+        std::cout << "Ranges size: " << msg->ranges.size() << std::endl;
 
         if (msg->ranges.size() > 270) {
-            std::cout << "Value at index 0: " << msg->ranges[0] << std::endl;
-            std::cout << "Value at index 90: " << msg->ranges[90] << std::endl;
-            std::cout << "Value at index 180: " << msg->ranges[180] << std::endl;
-            std::cout << "Value at index 270: " << msg->ranges[270] << std::endl;
+            for (int i = 0; i <= 9; ++i) {
+                std::cout << "Value at index " << i << ": " << msg->ranges[i] << std::endl;
+            }
+
+            
+            for (int i = 350; i <= 359; ++i) {
+                std::cout << "Value at index " << i << ": " << msg->ranges[i] << std::endl;
+            }
         } else {
             std::cout << "LaserScan data is not large enough to access these indices." << std::endl;
         }
@@ -45,10 +48,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    
-    
-
-    
+   
     rclcpp::shutdown();
     return 0;
 }
