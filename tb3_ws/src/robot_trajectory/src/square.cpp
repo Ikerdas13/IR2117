@@ -12,7 +12,6 @@ rclcpp::init(argc, argv);
 auto node = rclcpp::Node::make_shared("square");
  auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
  geometry_msgs::msg::Twist message;
- auto publish_count = 0;
 rclcpp::WallRate loop_rate(10ms);
 
      
