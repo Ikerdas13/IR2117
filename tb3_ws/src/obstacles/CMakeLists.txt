@@ -17,7 +17,9 @@ find_package(example_interfaces REQUIRED)
 add_executable(detector src/detector.cpp) 
 ament_target_dependencies(detector rclcpp sensor_msgs example_interfaces)
 
-
+install (DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 install(TARGETS
 	detector
 	DESTINATION lib/${PROJECT_NAME}
