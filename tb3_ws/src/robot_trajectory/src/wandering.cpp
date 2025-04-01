@@ -3,14 +3,16 @@
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "geometry_msgs/msg/twist.hpp"
-#include <algorithm>  
+#include <algorithm>
 #include <limits>
 #include <iostream>
 
 using namespace std::chrono_literals;
 
-float min_left = std::numeric_limits<float>::infinity();  
-float min_right = std::numeric_limits<float>::infinity();  
+float min_left = std::numeric_limits<float>::infinity();
+float min_right = std::numeric_limits<float>::infinity();
+
+int last_turn_direction = 0;
 
 void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
     std::cout << "LaserScan received" << std::endl;
@@ -19,8 +21,8 @@ void callback_topic(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
         std::cout << "Ranges size: " << msg->ranges.size() << std::endl;
 
         if (msg->ranges.size() > 270) {
-            min_left = std::numeric_limits<float>::infinity();  
-            min_right = std::numeric_limits<float>::infinity();  
+            min_left = std::numeric_limits<float>::infinity();
+            min_right = std::numeric_limits<float>::infinity();
 
             for (int i = 0; i <= 9; ++i) {
                 min_left = std::min(min_left, msg->ranges[i]);
@@ -52,15 +54,23 @@ int main(int argc, char *argv[]) {
     rclcpp::WallRate loop_rate(10ms);
 
     while (rclcpp::ok()) {
+        // Si les distàncies mínimes són adequades, anem endavant
         if (min_left > 0.5 && min_right > 0.5) {
-            message.linear.x = 0.2;  
-            message.angular.z = 0.0; 
-        } else if (min_left > min_right) {
-            message.linear.x = 0.0;
-            message.angular.z = 0.2;
-        } else {
+            message.linear.x = 0.2;
+            message.angular.z = 0.0;
+            last_turn_direction = -1;
+        }
+
+        else if (min_left < min_right && last_turn_direction != 1) {
             message.linear.x = 0.0;
             message.angular.z = -0.2;
+            last_turn_direction = 0;
+        }
+
+        else if (min_right < min_left && last_turn_direction != 0) {
+            message.linear.x = 0.0;
+            message.angular.z = 0.2;
+            last_turn_direction = 1;
         }
 
         publisher->publish(message);
@@ -72,4 +82,3 @@ int main(int argc, char *argv[]) {
     rclcpp::shutdown();
     return 0;
 }
-
