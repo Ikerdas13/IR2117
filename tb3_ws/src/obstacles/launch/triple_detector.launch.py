@@ -11,7 +11,7 @@ def generate_launch_description():
 			parameters=[
 				{"obs_angle_min": -0.3927},
 				{"obs_angle_max":  0.3927},
-				{"obs_threshold":  1.0}]
+				{"obs_threshold":  0.5}]
 			),	
 		Node(
 			package='obstacles',
@@ -20,7 +20,7 @@ def generate_launch_description():
 			parameters=[
 				{"obs_angle_min":  0.3927},
 				{"obs_angle_max":  1.1781},
-				{"obs_threshold":  1.0}]
+				{"obs_threshold":  0.5}]
 			),		
 		Node(
 			package='obstacles',
@@ -29,6 +29,10 @@ def generate_launch_description():
 			parameters=[
 				{"obs_angle_min": -1.1781},
 				{"obs_angle_max": -0.3927},
-				{"obs_threshold":  1.0}]
+				{"obs_threshold":  0.5}]
+			),
+		Node(
+			package='obstacles',
+			executable='avoidance'
 			),
 	])
