@@ -17,7 +17,7 @@ void callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
       angle -= 2 * M_PI;
     }
     if ((angle >= obs_angle_min) && (angle <= obs_angle_max)) {
-      if (range <= obs_threshold) {
+      if (range <= obs_threshold and range>0.1) {
         out_msg.data = true;
         break; 
       }
@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
   
   publisher = node->create_publisher<example_interfaces::msg::Bool>("obstacle", 10);
 
-  
+  auto qos = rclcpp::QoS(rclcpp::KeepLast(10)).best_effort();
   auto subscription = node->create_subscription<sensor_msgs::msg::LaserScan>(
-      "/scan", 10, callback);  
+      "/scan", qos, callback);  
 
   rclcpp::spin(node);
   rclcpp::shutdown();
