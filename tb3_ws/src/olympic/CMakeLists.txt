@@ -11,6 +11,8 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
+find_package(std_srvs REQUIRED)
+
 
 add_executable(rings src/rings.cpp)
 target_include_directories(rings PUBLIC
@@ -23,6 +25,7 @@ ament_target_dependencies(
   "std_msgs"
   "geometry_msgs"
   "turtlesim"
+  "std_srvs"
 )
 
 install(TARGETS rings
