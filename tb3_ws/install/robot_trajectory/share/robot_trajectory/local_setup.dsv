@@ -1,1 +1,2 @@
-/home/usuario/IR2117/tb3_ws/build/robot_trajectory/ament_cmake_environment_hooks/local_setup.dsv
+source;share/robot_trajectory/environment/ament_prefix_path.sh
+source;share/robot_trajectory/environment/path.sh

@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:36 (ament_cmake):
-  Unknown CMake command "ament_cmake".
-
-[0m
-gmake: *** [Makefile:267: cmake_check_build_system] Error 1

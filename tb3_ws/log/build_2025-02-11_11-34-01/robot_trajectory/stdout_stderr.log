@@ -1,6 +1,0 @@
-[31mCMake Error at CMakeLists.txt:17:
-  Parse error.  Expected a newline, got identifier with text
-  "add_compile_options".
-
-[0m
--- Configuring incomplete, errors occurred!

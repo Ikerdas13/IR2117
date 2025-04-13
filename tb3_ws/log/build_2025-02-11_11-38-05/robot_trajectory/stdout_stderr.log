@@ -1,7 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target publisher[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/publisher.dir/src/publisher.cpp.o[0m
-[100%] [32m[1mLinking CXX executable publisher[0m
-[100%] Built target publisher
--- Install configuration: ""
--- Installing: /home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/publisher
--- Set runtime path of "/home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/publisher" to ""

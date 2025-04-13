@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/IR2117/tb3_ws/src/robot_trajectory
+CMAKE_SOURCE_DIR = /home/al435577/IR2117/tb3_ws/src/robot_trajectory
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/usuario/IR2117/tb3_ws/build/robot_trajectory
+CMAKE_BINARY_DIR = /home/al435577/IR2117/tb3_ws/build/robot_trajectory
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles /home/usuario/IR2117/tb3_ws/build/robot_trajectory//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/al435577/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles /home/al435577/IR2117/tb3_ws/build/robot_trajectory//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/al435577/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

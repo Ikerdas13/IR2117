@@ -2,7 +2,7 @@
 # ament_cmake_core/cmake/uninstall_target/ament_cmake_uninstall_target.cmake.in
 
 function(ament_cmake_uninstall_target_remove_empty_directories path)
-  set(install_space "/home/usuario/IR2117/tb3_ws/install/robot_trajectory")
+  set(install_space "/home/al435577/IR2117/tb3_ws/install/robot_trajectory")
   if(install_space STREQUAL "")
     message(FATAL_ERROR "The CMAKE_INSTALL_PREFIX variable must not be empty")
   endif()
@@ -29,7 +29,7 @@ function(ament_cmake_uninstall_target_remove_empty_directories path)
 endfunction()
 
 # uninstall files installed using the standard install() function
-set(install_manifest "/home/usuario/IR2117/tb3_ws/build/robot_trajectory/install_manifest.txt")
+set(install_manifest "/home/al435577/IR2117/tb3_ws/build/robot_trajectory/install_manifest.txt")
 if(NOT EXISTS "${install_manifest}")
   message(FATAL_ERROR "Cannot find install manifest: ${install_manifest}")
 endif()
@@ -55,6 +55,3 @@ endforeach()
 message(STATUS "Execute custom uninstall script")
 
 # begin of custom uninstall code
-
-# uninstall files installed using the symlink install functions
-include("/home/usuario/IR2117/tb3_ws/build/robot_trajectory/ament_cmake_symlink_install/ament_cmake_symlink_install_uninstall_script.cmake")
