@@ -1,0 +1,8 @@
+[0.022s] Invoking command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/usuario/IR2117/tb3_ws/src/robot_trajectory -DCMAKE_INSTALL_PREFIX=/home/usuario/IR2117/tb3_ws/install/robot_trajectory
+[0.053s] [31mCMake Error at CMakeLists.txt:17:
+[0.053s]   Parse error.  Expected a newline, got identifier with text
+[0.053s]   "add_compile_options".
+[0.053s] 
+[0.053s] [0m
+[0.054s] -- Configuring incomplete, errors occurred!
+[0.057s] Invoked command in '/home/usuario/IR2117/tb3_ws/build/robot_trajectory' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/usuario/IR2117/tb3_ws/src/robot_trajectory -DCMAKE_INSTALL_PREFIX=/home/usuario/IR2117/tb3_ws/install/robot_trajectory
