@@ -32,11 +32,14 @@ add_executable(square_odom src/square_odom.cpp)
 ament_target_dependencies(square_odom rclcpp nav_msgs)
 add_executable(wandering src/wandering.cpp) 
 ament_target_dependencies(wandering rclcpp geometry_msgs sensor_msgs)
+add_executable(polygon src/polygon.cpp) 
+ament_target_dependencies(polygon rclcpp geometry_msgs)
 
 install(TARGETS
 	square_odom
 	square
 	wandering
+	polygon
 	DESTINATION lib/${PROJECT_NAME}
 )
 

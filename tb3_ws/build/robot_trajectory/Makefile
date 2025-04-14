@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/al435577/IR2117/tb3_ws/src/robot_trajectory
+CMAKE_SOURCE_DIR = /home/usuario/IR2117/tb3_ws/src/robot_trajectory
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/al435577/IR2117/tb3_ws/build/robot_trajectory
+CMAKE_BINARY_DIR = /home/usuario/IR2117/tb3_ws/build/robot_trajectory
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/al435577/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles /home/al435577/IR2117/tb3_ws/build/robot_trajectory//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles /home/usuario/IR2117/tb3_ws/build/robot_trajectory//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/al435577/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -236,6 +236,43 @@ wandering/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/build
 .PHONY : wandering/fast
 
+#=============================================================================
+# Target rules for targets named polygon
+
+# Build rule for target.
+polygon: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 polygon
+.PHONY : polygon
+
+# fast build rule for target.
+polygon/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/build
+.PHONY : polygon/fast
+
+src/polygon.o: src/polygon.cpp.o
+.PHONY : src/polygon.o
+
+# target to build an object file
+src/polygon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/src/polygon.cpp.o
+.PHONY : src/polygon.cpp.o
+
+src/polygon.i: src/polygon.cpp.i
+.PHONY : src/polygon.i
+
+# target to preprocess a source file
+src/polygon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/src/polygon.cpp.i
+.PHONY : src/polygon.cpp.i
+
+src/polygon.s: src/polygon.cpp.s
+.PHONY : src/polygon.s
+
+# target to generate assembly for a file
+src/polygon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/src/polygon.cpp.s
+.PHONY : src/polygon.cpp.s
+
 src/square.o: src/square.cpp.o
 .PHONY : src/square.o
 
@@ -323,9 +360,13 @@ help:
 	@echo "... test"
 	@echo "... robot_trajectory_uninstall"
 	@echo "... uninstall"
+	@echo "... polygon"
 	@echo "... square"
 	@echo "... square_odom"
 	@echo "... wandering"
+	@echo "... src/polygon.o"
+	@echo "... src/polygon.i"
+	@echo "... src/polygon.s"
 	@echo "... src/square.o"
 	@echo "... src/square.i"
 	@echo "... src/square.s"
