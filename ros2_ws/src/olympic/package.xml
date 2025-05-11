@@ -6,21 +6,20 @@
   <description>Action server and client to draw Olympic rings in turtlesim</description>
 
   <maintainer email="ikergg1307@gmail.com">al435577</maintainer>
-  <license>MIT</license> <!-- Cambia si usas otra licencia -->
+  <license>MIT</license>
 
-  <!-- Dependencias de compilación -->
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <build_depend>rclcpp</build_depend>
   <build_depend>rclcpp_action</build_depend>
   <build_depend>olympic_interfaces</build_depend>
+  <build_depend>turtlesim</build_depend>  <!-- Añadido -->
 
-  <!-- Dependencias en tiempo de ejecución -->
   <exec_depend>rclcpp</exec_depend>
   <exec_depend>rclcpp_action</exec_depend>
   <exec_depend>olympic_interfaces</exec_depend>
+  <exec_depend>turtlesim</exec_depend>  <!-- Añadido -->
 
-  <!-- Dependencias para testing -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
