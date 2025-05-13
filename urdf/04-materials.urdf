@@ -9,13 +9,12 @@
    <color rgba="1 1 1 1"/>
  </material>
   
-  <material name="blue">
   <link name="base_link">
     <visual>
       <geometry>
         <cylinder length="0.6" radius="0.2"/>
       </geometry>
-      </material name="blue">
+      <material name="blue" />
     </visual>
   </link>
 
@@ -25,7 +24,7 @@
         <box size="0.6 0.1 0.2"/>
       </geometry>
       <origin rpy="0 1.57075 0" xyz="0 0 -0.3"/>
-      <material name="white">
+      <material name="white" />
     </visual>
   </link>
 
@@ -35,5 +34,23 @@
     <origin xyz="0 -0.22 0.25"/>
   </joint>
 
-</robot>
+  <link name="left_leg">
+    <visual>
+      <geometry>
+        <box size="0.6 0.1 0.2"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0 0 -0.3"/>
+      <material name="white" />
+    </visual>
+  </link>
 
+  <joint name="base_to_left_leg" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_leg"/>
+    <origin xyz="0 0.22 0.25"/>
+  </joint>
+
+
+  
+
+</robot>
