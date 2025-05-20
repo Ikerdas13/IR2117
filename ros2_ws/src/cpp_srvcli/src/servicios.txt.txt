@@ -1,0 +1,134 @@
+// =========================================
+// ROS 2 C++ - Servicios y Cliente: Aros Olímpicos
+// Nodo: rings
+// Paquete: olympic
+// Autor: Tu Nombre
+// =========================================
+
+#include <chrono>
+#include <cmath>
+#include <memory>
+#include <vector>
+
+#include "rclcpp/rclcpp.hpp"
+#include "geometry_msgs/msg/twist.hpp"
+#include "turtlesim/srv/set_pen.hpp"
+#include "turtlesim/srv/teleport_absolute.hpp"
+
+using namespace std::chrono_literals;
+using std::placeholders::_1;
+using std::placeholders::_2;
+
+class RingsNode : public rclcpp::Node {
+public:
+  RingsNode() : Node("rings") {
+    // Leer parámetro "radius"
+    this->declare_parameter("radius", 1.0);
+    radius_ = this->get_parameter("radius").as_double();
+
+    // Crear publicador para cmd_vel
+    publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+
+    // Crear clientes para los servicios
+    pen_client_ = this->create_client<turtlesim::srv::SetPen>("/turtle1/set_pen");
+    teleport_client_ = this->create_client<turtlesim::srv::TeleportAbsolute>("/turtle1/teleport_absolute");
+
+    // Esperar a que los servicios estén disponibles
+    while (!pen_client_->wait_for_service(1s) || !teleport_client_->wait_for_service(1s)) {
+      if (!rclcpp::ok()) {
+        RCLCPP_ERROR(this->get_logger(), "Interrumpido mientras esperaba servicios");
+        return;
+      }
+      RCLCPP_INFO(this->get_logger(), "Esperando servicios...");
+    }
+
+    // Dibujar los 5 aros olímpicos
+    draw_olympic_rings();
+  }
+
+private:
+  void draw_circle() {
+    geometry_msgs::msg::Twist msg;
+    msg.linear.x = radius_;
+    msg.angular.z = 1.0;
+
+    rclcpp::Rate rate(50);
+    for (int i = 0; i < 314; ++i) {  // Aproximadamente 2*pi*50 iteraciones
+      publisher_->publish(msg);
+      rate.sleep();
+    }
+  }
+
+  void set_pen(uint8_t r, uint8_t g, uint8_t b) {
+    auto request = std::make_shared<turtlesim::srv::SetPen::Request>();
+    request->r = r;
+    request->g = g;
+    request->b = b;
+    request->width = 3;
+    request->off = 0;
+
+    auto future = pen_client_->async_send_request(request);
+    rclcpp::spin_until_future_complete(this->get_node_base_interface(), future);
+  }
+
+  void teleport(double x, double y, double theta = 0.0) {
+    auto request = std::make_shared<turtlesim::srv::TeleportAbsolute::Request>();
+    request->x = x;
+    request->y = y;
+    request->theta = theta;
+
+    auto future = teleport_client_->async_send_request(request);
+    rclcpp::spin_until_future_complete(this->get_node_base_interface(), future);
+  }
+
+  void draw_olympic_rings() {
+    struct Ring {
+      double x, y;
+      uint8_t r, g, b;
+    };
+
+    std::vector<Ring> rings = {
+      {2.0, 8.0,   0, 0, 255},     // Azul
+      {5.5, 8.0,   0, 0, 0},       // Negro
+      {9.0, 8.0,   255, 0, 0},     // Rojo
+      {3.75, 6.0,  255, 255, 0},   // Amarillo
+      {7.25, 6.0,  0, 255, 0}      // Verde
+    };
+
+    for (const auto& ring : rings) {
+      teleport(ring.x, ring.y);
+      set_pen(ring.r, ring.g, ring.b);
+      draw_circle();
+    }
+  }
+
+  double radius_;
+  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
+  rclcpp::Client<turtlesim::srv::SetPen>::SharedPtr pen_client_;
+  rclcpp::Client<turtlesim::srv::TeleportAbsolute>::SharedPtr teleport_client_;
+};
+
+int main(int argc, char *argv[]) {
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<RingsNode>());
+  rclcpp::shutdown();
+  return 0;
+}
+
+// =========================================
+// INSTRUCCIONES DE USO
+// =========================================
+// 1. Crear el paquete:
+// ros2 pkg create olympic --build-type ament_cmake --dependencies rclcpp geometry_msgs turtlesim
+
+// 2. Agregar el ejecutable en CMakeLists.txt:
+// add_executable(rings src/rings.cpp)
+// ament_target_dependencies(rings rclcpp geometry_msgs turtlesim)
+// install(TARGETS rings DESTINATION lib/${PROJECT_NAME})
+
+// 3. Compilar:
+// colcon build --packages-select olympic
+
+// 4. Ejecutar:
+// source install/setup.bash
+// ros2 run olympic rings --ros-args -p radius:=1.0
