@@ -249,6 +249,19 @@ polygon/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/build
 .PHONY : polygon/fast
 
+#=============================================================================
+# Target rules for targets named spiral
+
+# Build rule for target.
+spiral: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 spiral
+.PHONY : spiral
+
+# fast build rule for target.
+spiral/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/build
+.PHONY : spiral/fast
+
 src/polygon.o: src/polygon.cpp.o
 .PHONY : src/polygon.o
 
@@ -272,6 +285,30 @@ src/polygon.s: src/polygon.cpp.s
 src/polygon.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/src/polygon.cpp.s
 .PHONY : src/polygon.cpp.s
+
+src/spiral.o: src/spiral.cpp.o
+.PHONY : src/spiral.o
+
+# target to build an object file
+src/spiral.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/src/spiral.cpp.o
+.PHONY : src/spiral.cpp.o
+
+src/spiral.i: src/spiral.cpp.i
+.PHONY : src/spiral.i
+
+# target to preprocess a source file
+src/spiral.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/src/spiral.cpp.i
+.PHONY : src/spiral.cpp.i
+
+src/spiral.s: src/spiral.cpp.s
+.PHONY : src/spiral.s
+
+# target to generate assembly for a file
+src/spiral.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/src/spiral.cpp.s
+.PHONY : src/spiral.cpp.s
 
 src/square.o: src/square.cpp.o
 .PHONY : src/square.o
@@ -361,12 +398,16 @@ help:
 	@echo "... robot_trajectory_uninstall"
 	@echo "... uninstall"
 	@echo "... polygon"
+	@echo "... spiral"
 	@echo "... square"
 	@echo "... square_odom"
 	@echo "... wandering"
 	@echo "... src/polygon.o"
 	@echo "... src/polygon.i"
 	@echo "... src/polygon.s"
+	@echo "... src/spiral.o"
+	@echo "... src/spiral.i"
+	@echo "... src/spiral.s"
 	@echo "... src/square.o"
 	@echo "... src/square.i"
 	@echo "... src/square.s"

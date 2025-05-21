@@ -4,6 +4,7 @@
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/square_odom.dir
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/wandering.dir
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/polygon.dir
+/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/spiral.dir
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/test.dir
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/edit_cache.dir
 /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles/rebuild_cache.dir

@@ -67,6 +67,7 @@ all: CMakeFiles/square.dir/all
 all: CMakeFiles/square_odom.dir/all
 all: CMakeFiles/wandering.dir/all
 all: CMakeFiles/polygon.dir/all
+all: CMakeFiles/spiral.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -80,6 +81,7 @@ clean: CMakeFiles/square.dir/clean
 clean: CMakeFiles/square_odom.dir/clean
 clean: CMakeFiles/wandering.dir/clean
 clean: CMakeFiles/polygon.dir/clean
+clean: CMakeFiles/spiral.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -141,7 +143,7 @@ CMakeFiles/robot_trajectory_uninstall.dir/clean:
 CMakeFiles/square.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square.dir/build.make CMakeFiles/square.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square.dir/build.make CMakeFiles/square.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=3,4 "Built target square"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=5,6 "Built target square"
 .PHONY : CMakeFiles/square.dir/all
 
 # Build rule for subdir invocation for target.
@@ -167,7 +169,7 @@ CMakeFiles/square.dir/clean:
 CMakeFiles/square_odom.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square_odom.dir/build.make CMakeFiles/square_odom.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/square_odom.dir/build.make CMakeFiles/square_odom.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=5,6 "Built target square_odom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=7,8 "Built target square_odom"
 .PHONY : CMakeFiles/square_odom.dir/all
 
 # Build rule for subdir invocation for target.
@@ -193,7 +195,7 @@ CMakeFiles/square_odom.dir/clean:
 CMakeFiles/wandering.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wandering.dir/build.make CMakeFiles/wandering.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=7,8 "Built target wandering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=9,10 "Built target wandering"
 .PHONY : CMakeFiles/wandering.dir/all
 
 # Build rule for subdir invocation for target.
@@ -237,6 +239,32 @@ polygon: CMakeFiles/polygon.dir/rule
 CMakeFiles/polygon.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/polygon.dir/build.make CMakeFiles/polygon.dir/clean
 .PHONY : CMakeFiles/polygon.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/spiral.dir
+
+# All Build rule for target.
+CMakeFiles/spiral.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles --progress-num=3,4 "Built target spiral"
+.PHONY : CMakeFiles/spiral.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/spiral.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/spiral.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/IR2117/tb3_ws/build/robot_trajectory/CMakeFiles 0
+.PHONY : CMakeFiles/spiral.dir/rule
+
+# Convenience name for target.
+spiral: CMakeFiles/spiral.dir/rule
+.PHONY : spiral
+
+# clean rule for target.
+CMakeFiles/spiral.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/spiral.dir/build.make CMakeFiles/spiral.dir/clean
+.PHONY : CMakeFiles/spiral.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

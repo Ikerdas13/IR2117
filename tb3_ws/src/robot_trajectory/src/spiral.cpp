@@ -8,7 +8,8 @@ using namespace std::chrono_literals;
 
 int main(int argc, char * argv[])     
 {
-  rclcpp::init(argc, argv);   
+  rclcpp::init(argc, argv); 
+  geometry_msgs::msg::Twist message;    
   auto node = rclcpp::Node::make_shared("spiral");
   auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);     
   
@@ -19,21 +20,18 @@ int main(int argc, char * argv[])
   double angular_speed = node->get_parameter("angular_speed").get_parameter_value().get<double>();
   double distance_between_loops = node->get_parameter("distance_between_loops").get_parameter_value().get<double>();
   int number_of_loops = node->get_parameter("number_of_loops").get_parameter_value().get<int>();
-
+rclcpp::WallRate loop_rate(10ms);
   
-  geometry_msgs::msg::Twist message;    
-  double time = 0.0;
+  
   double angle = 0.0;
   double linear_speed = 0.0;
   double current_loops = 0.0;
-
+  double time = 0.001;
   
-  rclcpp::WallRate loop_rate(10ms);
-  double loop_wait = 0.001;
 
   while (rclcpp::ok() && current_loops <= number_of_loops) {   
 
-    angle += angular_speed * loop_wait;
+    angle += angular_speed * time;
     linear_speed = angular_speed * distance_between_loops * angle / 2*M_PI;
     current_loops = angle / 2*M_PI;
 
@@ -44,7 +42,7 @@ int main(int argc, char * argv[])
 
     rclcpp::spin_some(node);
     loop_rate.sleep();
-    time += loop_wait;
+    
   }
   message.linear.x = 0;
   message.angular.z = 0;

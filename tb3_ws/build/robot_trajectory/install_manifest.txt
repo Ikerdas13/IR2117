@@ -2,8 +2,10 @@
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/square
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/wandering
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/polygon
+/home/usuario/IR2117/tb3_ws/install/robot_trajectory/lib/robot_trajectory/spiral
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/robot_trajectory/launch/square.launch.py
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/robot_trajectory/launch/polygon.launch.py
+/home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/robot_trajectory/launch/spiral.launch.py
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/ament_index/resource_index/package_run_dependencies/robot_trajectory
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/ament_index/resource_index/parent_prefix_path/robot_trajectory
 /home/usuario/IR2117/tb3_ws/install/robot_trajectory/share/robot_trajectory/environment/ament_prefix_path.sh
